@@ -58,8 +58,8 @@ async function createOrUpdateEnrollmentWithAddress(params: CreateOrUpdateEnrollm
   const address = getAddressForUpsert(params.address);
   try {
     const addressFromCep = await getAddressFromCEP(address.cep);
-    const validateCep = addressFromCep.cidade === address.city && addressFromCep.uf === address.state && addressFromCep.logradouro === address.street && addressFromCep.complemento === address.addressDetail && addressFromCep.bairro === address.neighborhood
-    if(!validateCep){
+    const isValidCep = addressFromCep.logradouro;
+    if(!isValidCep){
       throw notFoundError();
     }
   } catch {

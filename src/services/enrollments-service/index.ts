@@ -12,8 +12,8 @@ async function getAddressFromCEP(cep: string) {
     throw notFoundError();
   }
 
-  if(result.data.erro) {
-    throw requestError(204, "invalid CEP")
+  if (result.data.erro) {
+    throw requestError(204, 'invalid CEP');
   }
 
   const { localidade, uf, logradouro, bairro, complemento } = result.data;
